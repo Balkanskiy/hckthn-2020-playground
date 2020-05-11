@@ -80,7 +80,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Header() {
+export default function Header(props) {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = useState(null);
@@ -110,14 +110,15 @@ export default function Header() {
   const mobileMenuId = "primary-search-account-menu-mobile";
 
   return (
-    <div className={classes.grow}>
-      <AppBar color="default" position="static">
+    <>
+      <AppBar color="default" position="fixed" className={props.class}>
         <Toolbar>
           <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
+            onClick={props.onClick}
           >
             <MenuIcon />
           </IconButton>
@@ -186,6 +187,6 @@ export default function Header() {
         handleMobileMenuClose={handleMobileMenuClose}
         handleProfileMenuOpen={handleProfileMenuOpen}
       />
-    </div>
+    </>
   );
 }
